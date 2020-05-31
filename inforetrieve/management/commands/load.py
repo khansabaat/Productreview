@@ -20,8 +20,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument("file_name", nargs="?", type=str)
         parser.add_argument(
-            "--batch_size", help="No. of reviews to process in one batch",
-            default=500
+            "--batch_size", help="No. of reviews to process in one batch", default=500
         )
 
     def dataiter(self, file_name):
