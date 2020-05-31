@@ -1,3 +1,4 @@
+from django.conf import settings
 from elasticsearch import Elasticsearch
 from rest_framework.generics import GenericAPIView
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -19,7 +20,7 @@ class Search(APIView):
                 "fields": {"review/text": {}},
             },
         }
-        es = Elasticsearch()
+        es = Elasticsearch(settings.ELASTICSEARCH_URL)
         res = es.search(query, "reviews")
         if res["hits"]["total"]["value"]:
             doc = res["hits"]["hits"][0]
